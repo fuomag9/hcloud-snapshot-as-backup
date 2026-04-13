@@ -29,7 +29,7 @@ docker run -d --name hcloud-snapshot-as-backup \
   -e LABEL_SELECTOR="AUTOBACKUP" \
   -e KEEP_LAST=3 \
   -e CRON="0 1 * * *" \
-  fbrettnich/hcloud-snapshot-as-backup
+  ghcr.io/fuomag9/hcloud-snapshot-as-backup-service
 ```
 
 Put your [Hetzner Cloud Console API-Key](#generate-hetzner-cloud-console-api-key) after `API_TOKEN=` in line 4.
@@ -39,9 +39,9 @@ Optional: Set `CRON` to `false` to disable CronScheduler in the container and sc
 ---
 
 ### Installation: With Docker Compose
-**1. Download [docker-compose.yml](https://github.com/fbrettnich/hcloud-snapshot-as-backup/blob/main/docker-compose.yml)**  
+**1. Download [docker-compose.yml](https://github.com/fuomag9/hcloud-snapshot-as-backup/blob/main/docker-compose.yml)**  
 ```
-curl -sSL https://raw.githubusercontent.com/fbrettnich/hcloud-snapshot-as-backup/main/docker-compose.yml > docker-compose.yml
+curl -sSL https://raw.githubusercontent.com/fuomag9/hcloud-snapshot-as-backup/main/docker-compose.yml > docker-compose.yml
 ```
 
 **2. Edit configuration**  
@@ -60,7 +60,7 @@ docker-compose up -d
 **1. Clone this repository**  
 ```
 apt install git
-git clone https://github.com/fbrettnich/hcloud-snapshot-as-backup.git /opt/hcloud-snapshot-as-backup
+git clone https://github.com/fuomag9/hcloud-snapshot-as-backup.git /opt/hcloud-snapshot-as-backup
 ```
 
 **2. Install requirements**  
@@ -99,7 +99,7 @@ This crontab executes the script every day at 1am.
 ## Configuration  
 Depending on how you run the script, you will need to configure.  
 When you run the script using Docker, the options are set by environment variables.  
-When you run the script via command/crontab, the options are set via the configuration file ([`config.json`](https://github.com/fbrettnich/hcloud-snapshot-as-backup/blob/main/config-example.json)).  
+When you run the script via command/crontab, the options are set via the configuration file ([`config.json`](https://github.com/fuomag9/hcloud-snapshot-as-backup/blob/main/config-example.json)).  
 
 ### Generate Hetzner Cloud Console API-Key  
 1. Login to [Hetzner Cloud Console](https://console.hetzner.cloud/)
@@ -109,7 +109,7 @@ When you run the script via command/crontab, the options are set via the configu
 5. Click on "Create API Token" and create a new token with read & write permission
 6. Copy the key and paste it into the environment variables under `API_TOKEN` or in the config under `api-token`
 
-![Create Hetzner API Token Gif](https://raw.githubusercontent.com/fbrettnich/hcloud-snapshot-as-backup/main/.github/images/create-hetzner-api-token.gif)
+![Create Hetzner API Token Gif](https://raw.githubusercontent.com/fuomag9/hcloud-snapshot-as-backup/main/.github/images/create-hetzner-api-token.gif)
 
 ### Choose how many backups you want to keep by default  
 You can specify in the environment variables under `KEEP_LAST` or in the config under `keep-last` how many backups you want to keep per server by default.  
@@ -164,7 +164,7 @@ This script works with the powerful Hetzner Labels.
     - The script ignores all snapshots without this label (Therefore, only old snapshots with this label are deleted)
     - If you want to keep an automatically generated snapshot, just remove the label `AUTOBACKUP`
 
-![Server-Labels](https://raw.githubusercontent.com/fbrettnich/hcloud-snapshot-as-backup/main/.github/images/server-labels.png "Hetzner Cloud Console: Server Labels")
+![Server-Labels](https://raw.githubusercontent.com/fuomag9/hcloud-snapshot-as-backup/main/.github/images/server-labels.png "Hetzner Cloud Console: Server Labels")
 
 ## Why is this script useful?  
 | Advantages                                                                                                                                                                                                                                            | Disadvantages                                                                                                                                    |

@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - service: hcloud-snapshot-as-backup
+          - service: service
             dockerfile: Dockerfile
             context: .
     steps:
